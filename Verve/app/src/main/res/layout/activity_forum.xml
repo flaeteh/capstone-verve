@@ -55,20 +55,32 @@
                                           android:orientation="horizontal"
                                           app:layout_constraintGuide_percent="0.15"/>
 
-    <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                          android:id="@+id/guideline34"
-                                          android:orientation="horizontal" app:layout_constraintGuide_percent="0.91"/>
-    <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                          android:id="@+id/guideline35"
-                                          android:orientation="horizontal" app:layout_constraintGuide_percent="0.81"/>
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp" app:srcCompat="@drawable/btn_rounded_green"
-            android:id="@+id/imageView16"
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline34"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.925"/>
 
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="14dp" android:layout_marginRight="14dp"
-            android:layout_marginBottom="14dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView9" app:layout_constraintTop_toTopOf="@+id/guideline35"/>
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline35"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.83"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/btn_rounded_green"
+        android:id="@+id/imageView16"
+        android:elevation="19dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView9"
+        app:layout_constraintTop_toTopOf="@+id/guideline35"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"/>
     <android.support.design.widget.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
@@ -148,6 +160,7 @@
             android:layout_height="wrap_content"
             app:srcCompat="@mipmap/ic_add"
             android:id="@+id/click_fab"
+            android:elevation="20dp"
             app:layout_constraintEnd_toEndOf="@+id/imageView16"
             app:layout_constraintStart_toStartOf="@+id/imageView16"
             app:layout_constraintBottom_toBottomOf="@+id/imageView16"

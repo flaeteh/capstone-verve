@@ -4,7 +4,7 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="wrap_content"
 	>
 
 
@@ -12,10 +12,14 @@
 		android:layout_height="wrap_content"
 		android:layout_alignParentLeft="true"
 		android:layout_alignParentTop="true"
-		app:cardElevation="7dp"
+		app:cardElevation="4dp"
 		android:id="@+id/card_post"
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
 		app:cardCornerRadius="10dp"
+		android:layout_marginLeft="7dp"
+		android:layout_marginRight="7dp"
+		android:layout_marginTop="9dp"
+		android:layout_marginBottom="9dp"
 		app:cardPreventCornerOverlap="false"
 		>
 
@@ -73,6 +77,7 @@
 							android:orientation="horizontal"
 							android:layout_width="wrap_content"
 							android:layout_height="match_parent"
+							android:gravity="right"
 							android:layout_weight="1">
 
 							<ImageView
@@ -97,6 +102,7 @@
 							android:layout_width="wrap_content"
 							android:layout_height="match_parent"
 							android:layout_weight="1"
+							android:gravity="right"
 							>
 
 							<ImageView
@@ -132,6 +138,7 @@
 							android:layout_marginLeft="5dp"
 							android:layout_marginRight="30dp"
 							android:textSize="10dp"
+							android:layout_weight="0.1"
 							android:id="@+id/txtDate"/>
 
 						<TextView
@@ -139,7 +146,7 @@
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:id="@+id/txtTime"
-							android:layout_weight="1"
+							android:layout_weight="5"
 							android:textSize="10dp"/>
 					</LinearLayout>
 
@@ -180,7 +187,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_margin="10dp"
-				app:cardElevation="4dp"
+				app:cardElevation="2dp"
 				>
 
 
@@ -210,7 +217,8 @@
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:id="@+id/txtDateComment"
-							android:layout_weight="1"
+							android:layout_weight="0.5"
+							android:gravity="right"
 							android:textSize="10dp"/>
 
 						<TextView
@@ -218,7 +226,8 @@
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:id="@+id/txtTimeComment"
-							android:layout_weight="1"
+							android:layout_weight="0.5"
+							android:gravity="right"
 							android:textSize="10dp"/>
 					</LinearLayout>
 
@@ -240,6 +249,8 @@
 						<ImageView
 							android:layout_width="13dp"
 							android:layout_height="29dp"
+							android:paddingTop="3dp"
+							android:paddingBottom="3dp"
 							app:srcCompat="@drawable/verticalline"
 							android:id="@+id/imageView22"
 							android:layout_weight="1"/>
@@ -263,7 +274,7 @@
 				android:layout_height="wrap_content"
 				android:layout_marginLeft="10dp"
 				android:layout_marginRight="10dp"
-				app:cardElevation="4dp">
+				app:cardElevation="2dp">
 
 
 				<LinearLayout

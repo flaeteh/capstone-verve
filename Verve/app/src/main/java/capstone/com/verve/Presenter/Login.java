@@ -5,12 +5,8 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.widget.EditText;
 import android.widget.Toast;
-<<<<<<< HEAD:Verve/app/src/main/java/capstone/com/verve/Model/Login.java
 import capstone.com.verve.View.ForumActivity;
 import capstone.com.verve.View.LoginActivity;
-=======
-import capstone.com.verve.View.ForumFeedActivity;
->>>>>>> 02af95747303e6c133c8e796b1448af2b4105c68:Verve/app/src/main/java/capstone/com/verve/Presenter/Login.java
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

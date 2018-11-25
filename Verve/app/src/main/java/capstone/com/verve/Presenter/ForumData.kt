@@ -14,6 +14,34 @@ open class ForumData {
     lateinit var lastPerson: String
     lateinit var lastComment: String
 
+    constructor() {}
+
+    constructor(
+        uName: String,
+        uDate: String,
+        uTime: String,
+        hearts: String,
+        comments: String,
+        postTitle: String,
+        postDetails: String,
+        dateComment: String,
+        timeComment: String,
+        lastPerson: String,
+        lastComment: String
+    ) {
+        this.uName = uName
+        this.uDate = uDate
+        this.uTime = uTime
+        this.hearts = hearts
+        this.comments = comments
+        this.postTitle = postTitle
+        this.postDetails = postDetails
+        this.dateComment = dateComment
+        this.timeComment = timeComment
+        this.lastPerson = lastPerson
+        this.lastComment = lastComment
+    }
+
 
     fun setUname (uName: String) {
         this.uName = uName

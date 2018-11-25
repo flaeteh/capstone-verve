@@ -22,12 +22,7 @@
         </activity>
         <activity android:name=".View.ForgotPasswordActivity">
         </activity>
-        <activity
-                android:name=".View.ForumFeedActivity"
-                android:label="@string/title_activity_forum_feed"
-                android:theme="@style/AppTheme">
-        </activity>
-        <activity android:name=".View.ForumActivity">
+        <activity android:name=".View.ForumActivity" android:windowSoftInputMode="stateHidden" >
         </activity>
     </application>
 

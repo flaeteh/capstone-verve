@@ -1,9 +1,12 @@
 package capstone.com.verve.View
 
+import android.app.Activity
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import capstone.com.verve.Interface.AcceptListener
 import capstone.com.verve.R
 import capstone.com.verve.View.Adapters.ForumPagerAdapter
@@ -20,6 +23,7 @@ class ForumActivity : AppCompatActivity(), AcceptListener {
         click_fab.setOnClickListener {
             showPostDialog()
         }
+
 
         val tabLayout = findViewById<View>(R.id.tabLayout)
         val pageAdapter = ForumPagerAdapter(supportFragmentManager, 2)

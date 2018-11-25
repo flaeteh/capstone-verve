@@ -4,11 +4,18 @@ import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import capstone.com.verve.Model.ForumData
 
 import capstone.com.verve.R
+import capstone.com.verve.View.Adapters.ForumPagerAdapter
+import capstone.com.verve.View.Adapters.ForumRecyclerViewAdapter
+import kotlinx.android.synthetic.main.fragment_forum_following.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,6 +36,7 @@ class ForumFollowingFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
+    var recyclerView : RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +51,39 @@ class ForumFollowingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_forum_following, container, false)
+        var rootView = inflater.inflate(R.layout.fragment_forum_following, container, false)
+
+
+        return rootView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        recyclerView = view.findViewById(R.id.followingRecyclerView) as RecyclerView
+        var layoutManager = LinearLayoutManager(context)
+        var postList : MutableList<ForumData> = ArrayList()
+        recyclerView!!.layoutManager = layoutManager
+        var eAdapter = ForumRecyclerViewAdapter(postList)
+        recyclerView!!.adapter = eAdapter
+
+        for (i in 1..10) {
+            var postsData = ForumData()
+
+            postsData.setUname("John Ranel Tuble $i")
+            postsData.setUdate("11/25/2018")
+            postsData.setUtime("12:15 PM")
+            postsData.setcomments("69")
+            postsData.sethearts("15")
+            postsData.setPosttitle("I SURVIVED!")
+            postsData.setPostdetails("I want to express my deepest gratitude to my family and friends for being with me during this challenging journey")
+            postsData.setdateComment("11/25/2018")
+            postsData.settimeComment("11:25 PM")
+            postsData.setlastPerson("Syuujie Yoshino")
+            postsData.setLastcomment("Wow. Congratulations! Can't wait to see you again.")
+
+            postList.add(postsData)
+        }
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
