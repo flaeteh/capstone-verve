@@ -11,15 +11,19 @@ import android.support.annotation.Nullable
 import android.support.v4.os.HandlerCompat.postDelayed
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.content.pm.PackageManager
+import android.content.ComponentName
+import android.view.WindowManager
 
 
 class SplashActivity : AppCompatActivity() {
 
     private var logo: ImageView? = null
-    private val splashTimeOut: Long = 2000
+    private val splashTimeOut: Long = 1800
 
     override fun onCreate(@Nullable savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_splash)
         logo = findViewById(R.id.img_logo)
 
@@ -31,5 +35,6 @@ class SplashActivity : AppCompatActivity() {
 
         val splashAnimation = AnimationUtils.loadAnimation(this, R.anim.splashanimation)
         logo!!.startAnimation(splashAnimation)
+
     }
 }

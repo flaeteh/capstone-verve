@@ -72,7 +72,7 @@ class ForumFollowingFragment : Fragment() {
             postsData.setUname("John Ranel Tuble $i")
             postsData.setUdate("11/25/2018")
             postsData.setUtime("12:15 PM")
-            postsData.setcomments("69")
+            postsData.setcomments("6")
             postsData.sethearts("15")
             postsData.setPosttitle("I SURVIVED!")
             postsData.setPostdetails("I want to express my deepest gratitude to my family and friends for being with me during this challenging journey")

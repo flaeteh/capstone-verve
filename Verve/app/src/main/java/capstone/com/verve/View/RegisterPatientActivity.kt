@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.view.WindowManager
 import android.widget.EditText
 import android.widget.RadioButton
 import capstone.com.verve.Presenter.Registration
@@ -31,6 +32,7 @@ class RegisterPatientActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_register_patient)
         register = Registration()
         etxt_firstname = findViewById(R.id.et_firstname)
