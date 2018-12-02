@@ -33,10 +33,10 @@ public class LoginActivity extends AppCompatActivity {
 
         etUsername = findViewById(R.id.etxt_username);
         etPassword = findViewById(R.id.etxt_password);
+
         user = firebaseConnection.getFirebaseUser();
 
         auth = firebaseConnection.getFirebaseAuth();
-
 
         if (user != null) {
             // User is signed in
