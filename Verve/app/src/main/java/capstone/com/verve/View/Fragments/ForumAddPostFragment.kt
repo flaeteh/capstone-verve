@@ -76,7 +76,7 @@ class ForumAddPostFragment : DialogFragment(), AcceptListener {
         acceptButton?.setOnClickListener {
 
             posts.savePosts(userRef, postRef, auth, postTitle, descTitle, activity!!.applicationContext)
-
+            dismiss()
         }
 
         cancelButton?.setOnClickListener {

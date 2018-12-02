@@ -22,13 +22,4 @@ class ForumPagerAdapter (fm: FragmentManager?, numOfTabs: Int) : FragmentPagerAd
     override fun getCount(): Int {
         return numOfTabs
     }
-
-    fun getFollowingFragment() : ForumFollowingFragment {
-        return followingFragment
-    }
-
-    fun getPopularFragment() : ForumPopularFragment {
-        return popularFragment
-    }
-
 }

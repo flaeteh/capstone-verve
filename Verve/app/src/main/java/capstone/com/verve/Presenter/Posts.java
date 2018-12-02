@@ -16,7 +16,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import static android.support.v4.app.ActivityCompat.startActivityForResult;
 
 public class Posts {
     String saveCurrentDate = "";

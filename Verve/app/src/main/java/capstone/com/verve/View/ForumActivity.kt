@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.content.ContextCompat.startActivity
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import capstone.com.verve.Interface.AcceptListener
@@ -18,8 +20,11 @@ import capstone.com.verve.R.id.img_profile
 import capstone.com.verve.View.Adapters.ForumPagerAdapter
 import capstone.com.verve.View.Fragments.ForumAddPostFragment
 import kotlinx.android.synthetic.main.activity_forum.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import org.jetbrains.anko.find
 
-class ForumActivity : AppCompatActivity(), AcceptListener {
+class ForumActivity : BaseView(), AcceptListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +36,9 @@ class ForumActivity : AppCompatActivity(), AcceptListener {
         var img_home = findViewById<ImageButton>(R.id.img_home)
         var imgProfile = findViewById<ImageButton>(R.id.img_profile)
         var img_messages = findViewById<ImageButton>(R.id.img_messages)
+        var tabLayout = findViewById<View>(R.id.tabLayout)
+
+
 
         click_fab.setOnClickListener {
             showPostDialog()
@@ -40,11 +48,8 @@ class ForumActivity : AppCompatActivity(), AcceptListener {
             showProfile()
         }
 
-        val tabLayout = findViewById<View>(R.id.tabLayout)
-        val pageAdapter = ForumPagerAdapter(supportFragmentManager, 2)
-        val followingFragment = pageAdapter.getFollowingFragment()
-        val popularFragment = pageAdapter.getPopularFragment()
 
+        val pageAdapter = ForumPagerAdapter(supportFragmentManager, 2)
         viewpager.adapter = pageAdapter
         viewpager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout as TabLayout?))
 
@@ -52,10 +57,9 @@ class ForumActivity : AppCompatActivity(), AcceptListener {
 
 
 
-
     private fun showPostDialog() {
         val fm = supportFragmentManager
-        val editNameDialogFragment = ForumAddPostFragment.newInstance("What's Up?")
+        var editNameDialogFragment = ForumAddPostFragment.newInstance("What's Up?")
         editNameDialogFragment.setListener(this@ForumActivity)
         editNameDialogFragment.show(fm, "fragment_edit_name")
     }

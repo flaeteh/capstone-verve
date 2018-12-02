@@ -9,12 +9,21 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import capstone.com.verve.Model.ForumData
+import capstone.com.verve.Presenter.Posts
+import capstone.com.verve.Presenter.UserPosts
+import capstone.com.verve.Presenter.Users
 
 import capstone.com.verve.R
 import capstone.com.verve.View.Adapters.ForumPagerAdapter
 import capstone.com.verve.View.Adapters.ForumRecyclerViewAdapter
+import com.firebase.ui.database.FirebaseRecyclerAdapter
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_forum_following.*
+import kotlinx.android.synthetic.main.item_post_forum.view.*
+import com.firebase.ui.database.FirebaseRecyclerOptions
+
+
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -36,7 +45,9 @@ class ForumFollowingFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
-    var recyclerView : RecyclerView? = null
+    lateinit var mPostsViewHolder: FirebaseRecyclerAdapter<UserPosts, PostsViewHolder>
+    lateinit var mRecyclerView: RecyclerView
+    lateinit var mDatabase: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,26 +63,28 @@ class ForumFollowingFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var rootView = inflater.inflate(R.layout.fragment_forum_following, container, false)
-
+        mRecyclerView = rootView.findViewById(R.id.followingRecyclerView)
 
         return rootView
     }
 
-    private fun DisplayUserPosts() {
-
+    override fun onStart() {
+        super.onStart()
+        mPostsViewHolder.startListening()
     }
 
+    override fun onStop() {
+        super.onStop()
+        mPostsViewHolder.stopListening()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        recyclerView = view.findViewById<RecyclerView>(R.id.followingRecyclerView)
+        mRecyclerView.hasFixedSize()
         var layoutManager = LinearLayoutManager(context)
-        var postList : MutableList<ForumData> = ArrayList()
-        recyclerView!!.layoutManager = layoutManager
-        var eAdapter = ForumRecyclerViewAdapter(postList)
-        recyclerView!!.adapter = eAdapter
+        mRecyclerView.layoutManager = layoutManager
 
-        for (i in 1..10) {
+       /* for (i in 1..10) {
             var postsData = ForumData()
 
             postsData.setUname("John Ranel Tuble $i")
@@ -88,12 +101,50 @@ class ForumFollowingFragment : Fragment() {
 
             postList.add(postsData)
         }
+*/
 
+        //firebase recyclerview
+        mDatabase = FirebaseDatabase.getInstance().reference
+        val postsQuery = mDatabase.child("Posts")
+        val postsOptions =
+            FirebaseRecyclerOptions.Builder<UserPosts>().setQuery(postsQuery, UserPosts::class.java).build()
+
+
+        mPostsViewHolder = object : FirebaseRecyclerAdapter<UserPosts, PostsViewHolder>(postsOptions) {
+            override fun onBindViewHolder(holder: PostsViewHolder, position: Int, model: UserPosts) {
+                holder.bind(getItem(position))
+            }
+
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsViewHolder {
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_post_forum, parent, false)
+
+                return PostsViewHolder(view)
+            }
+
+        }
+
+        mRecyclerView.adapter = mPostsViewHolder
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
+    class PostsViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
+
+        fun bind(post: UserPosts) = with(itemView) {
+            txtDate?.text = post.datePost
+            txtName?.text = post.firstname.plus(post.middlename).plus(post.lastname)
+            txtPostDetails?.text = post.postDescription
+            txtPostTitle?.text = post.postTitle
+            txtTime?.text = post.timePost
+           /* txtHearts?.text = post.hearts
+            txtComments?.text = post.comments*/
+
+
+           /* txtLastPerson?.text = post.lastPerson
+            txtLastComment?.text = post.lastComment
+            txtDateComment?.text = post.dateComment
+            txtTimeComment?.text = post.timeComment*/
+
+        }
     }
 
 

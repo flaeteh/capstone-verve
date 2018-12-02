@@ -2,8 +2,10 @@ package capstone.com.verve.View
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.media.Image
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
@@ -15,6 +17,7 @@ import android.widget.TextView
 import capstone.com.verve.API.FirebaseConnection
 import capstone.com.verve.Presenter.UserDetails
 import capstone.com.verve.R
+import capstone.com.verve.View.Adapters.ProfilePagerAdapter
 import kotlinx.android.synthetic.main.activity_profile.*
 import org.jetbrains.anko.find
 import org.w3c.dom.Text
@@ -28,6 +31,8 @@ class ProfileActivity : AppCompatActivity() {
     var txt_email: TextView? = null
     var btn_logout: ImageButton? = null
     var txt_username : TextView? = null
+    var tabs: TabLayout? = null
+    var home: ImageButton? = null
     internal var userDetails = UserDetails()
     internal var firebaseConnection = FirebaseConnection()
 
@@ -44,23 +49,28 @@ class ProfileActivity : AppCompatActivity() {
         txt_birthday = findViewById(R.id.txt_birthday)
         txt_email = findViewById(R.id.txt_email)
         btn_logout = findViewById(R.id.btn_logout)
+        tabs = findViewById(R.id.tabLayout)
+        home = findViewById(R.id.img_home)
+
+        home?.setOnClickListener {
+            showForum()
+        }
 
 
         userDetails.getUserProfile(firebaseConnection.getProfileReference("Users"), txt_username, txt_name, txt_email, txt_birthday, txt_address)
 
-        var imgHome = findViewById<ImageButton>(R.id.img_home)
 
-        imgHome.setOnClickListener {
-           showForum()
-        }
-
-        tabLayout?.setTabTextColors(resources.getColor(R.color.LightGray), resources.getColor(R.color.White))
-        for (i in 0 until tabLayout?.tabCount!!) {
-            val tab = (tabLayout?.getChildAt(0) as ViewGroup).getChildAt(i)
+        tabs?.setTabTextColors(resources.getColor(R.color.LightGray), resources.getColor(R.color.White))
+        for (i in 0 until tabs?.tabCount!!) {
+            val tab = (tabs?.getChildAt(0) as ViewGroup).getChildAt(i)
             val p = tab.layoutParams as ViewGroup.MarginLayoutParams
             p.setMargins(10, 0, 10, 0)
             tab.requestLayout()
         }
+
+        val pageAdapter = ProfilePagerAdapter(supportFragmentManager, 3)
+        viewpager.adapter = pageAdapter
+        viewpager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
     }
 
     private fun showForum() {

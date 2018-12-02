@@ -80,7 +80,7 @@ class RegisterPatientActivity : AppCompatActivity() {
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
             val myFormat = "MM/dd/yy"
             val sdf = SimpleDateFormat(myFormat, Locale.US)
-            etxt_birthdate?.setText(sdf.format(myCalendar.getTime()))
+            etxt_birthdate?.setText(sdf.format(myCalendar.time))
         }
     }
 

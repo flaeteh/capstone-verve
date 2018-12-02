@@ -1,6 +1,6 @@
 package capstone.com.verve.Model
 
-open class ForumData {
+class ForumData {
 
     lateinit var uName: String
     lateinit var uDate: String
@@ -14,7 +14,7 @@ open class ForumData {
     lateinit var lastPerson: String
     lateinit var lastComment: String
 
-    constructor() {}
+    constructor()
 
     constructor(
         uName: String,
