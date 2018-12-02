@@ -18,6 +18,8 @@ public class Registration {
     String gender = "";
     Users getInfo = new Users();
 
+
+
     public void registerPatient(EditText firstname, EditText middlename,
                                 EditText lastname, EditText username,
                                 EditText password, EditText mobile,
@@ -103,6 +105,7 @@ public class Registration {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(context, "Registration is Successful!", Toast.LENGTH_LONG).show();
+                                        auth.signOut();
                                         sendEmailVerification(user, auth, context);
                                         sendUserToLoginActivity(context);
                                     } else {
@@ -132,7 +135,7 @@ public class Registration {
 
     private void sendEmailVerification(FirebaseUser user, final FirebaseAuth auth, final Context context) {
 
-        user = auth.getCurrentUser();
+        //user = auth.getCurrentUser();
         if (user != null) {
             user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override

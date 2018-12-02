@@ -6,6 +6,16 @@ public class Users {
 
     public String firstname, middlename, lastname, username, mobile, email, address, birthday, gender, role;
 
+    public String wholeName;
+
+    public String getWholeName() {
+        return wholeName;
+    }
+
+    public void setWholeName(String wholeName) {
+        this.wholeName = wholeName;
+    }
+
 
     public String getFirstname() {
         return firstname;
@@ -92,7 +102,7 @@ public class Users {
     }
 
     public Users(String firstname, String middlename, String lastname, String username,
-                   String mobile, String email, String address, String birthday, String gender, String role) {
+                 String mobile, String email, String address, String birthday, String gender, String role) {
         this.firstname = firstname;
         this.middlename = middlename;
         this.lastname = lastname;

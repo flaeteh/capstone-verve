@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import capstone.com.verve.API.FirebaseConnection;
 import capstone.com.verve.Presenter.Login;
+import capstone.com.verve.Presenter.Posts;
 import capstone.com.verve.R;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -17,6 +20,8 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth auth = null;
     
     FirebaseUser user;
+
+    FirebaseConnection firebaseConnection = new FirebaseConnection();
 
     Boolean emailChecker = false;
 
@@ -28,9 +33,9 @@ public class LoginActivity extends AppCompatActivity {
 
         etUsername = findViewById(R.id.etxt_username);
         etPassword = findViewById(R.id.etxt_password);
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        user = firebaseConnection.getFirebaseUser();
 
-        auth = FirebaseAuth.getInstance();
+        auth = firebaseConnection.getFirebaseAuth();
 
 
         if (user != null) {
@@ -61,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (v.getId() == R.id.btn_login) {
 
-            login.allowUserToLogin(etUsername, etPassword, LoginActivity.this, auth);
+            login.allowUserToLogin(etUsername, etPassword, LoginActivity.this, auth, user);
         }
     }
 
@@ -72,6 +77,8 @@ public class LoginActivity extends AppCompatActivity {
         etUsername.setHintTextColor(getResources().getColor(R.color.Pale));
         etPassword.setHintTextColor(getResources().getColor(R.color.Pale));
     }
-
+//    private void DisplayUserPosts(){
+//        FirebaseRecyclerAdapter<Posts, >
+//    }
 
 }

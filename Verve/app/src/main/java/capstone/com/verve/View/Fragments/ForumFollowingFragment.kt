@@ -57,9 +57,14 @@ class ForumFollowingFragment : Fragment() {
         return rootView
     }
 
+    private fun DisplayUserPosts() {
+
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        recyclerView = view.findViewById(R.id.followingRecyclerView) as RecyclerView
+        recyclerView = view.findViewById<RecyclerView>(R.id.followingRecyclerView)
         var layoutManager = LinearLayoutManager(context)
         var postList : MutableList<ForumData> = ArrayList()
         recyclerView!!.layoutManager = layoutManager

@@ -20,7 +20,7 @@ public class Login {
     Boolean emailAddressChecker = false;
 
 
-    public void allowUserToLogin(EditText email, EditText password, Context context, FirebaseAuth auth) {
+    public void allowUserToLogin(EditText email, EditText password, Context context, FirebaseAuth auth, FirebaseUser user) {
         String emailAdd = email.getText().toString().trim();
         String userPassword = password.getText().toString().trim();
 
@@ -34,12 +34,13 @@ public class Login {
         }
 
 
-        userLogin(emailAdd, userPassword, context, auth);
+        userLogin(emailAdd, userPassword, context, auth, user);
 
     }
 
 
-    private void userLogin(String email, String password, final Context context, final FirebaseAuth auth) {
+    private void userLogin(String email, String password, final Context context, final FirebaseAuth auth,
+                           final FirebaseUser user) {
 
 
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -55,8 +56,7 @@ public class Login {
                             if (dataSnapshot.exists()) {
                                 String role = dataSnapshot.child("role").getValue(String.class);
                                 if (role.equals(patient)) {
-                                    //Toast.makeText(context, "patient", Toast.LENGTH_LONG).show();
-                                    checkIfEmailIsVerified(context, auth);
+                                    checkIfEmailIsVerified(context, auth, user);
                                 }
                             }
 
@@ -83,8 +83,8 @@ public class Login {
 
     }
 
-    private void checkIfEmailIsVerified(Context context, FirebaseAuth auth) {
-        FirebaseUser user = auth.getCurrentUser();
+    private void checkIfEmailIsVerified(Context context, FirebaseAuth auth, FirebaseUser user) {
+        //FirebaseUser user = auth.getCurrentUser();
         emailAddressChecker = user.isEmailVerified();
 
         if (emailAddressChecker) {

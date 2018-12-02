@@ -7,6 +7,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.RadioButton
+import capstone.com.verve.API.FirebaseConnection
 import capstone.com.verve.Presenter.Registration
 import capstone.com.verve.R
 import com.google.firebase.auth.FirebaseAuth
@@ -28,6 +29,7 @@ class RegisterPatientActivity : AppCompatActivity() {
     var rad_male: RadioButton? = null
     var rad_female: RadioButton? = null
     private var user: FirebaseUser? = null
+    internal var firebaseConnection = FirebaseConnection()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +50,8 @@ class RegisterPatientActivity : AppCompatActivity() {
         rad_male = findViewById(R.id.radioMale);
         rad_female = findViewById(R.id.radioFemale)
 
-        auth = FirebaseAuth.getInstance()
+        auth = firebaseConnection.firebaseAuth
+        user = firebaseConnection.firebaseUser
 
 
     }

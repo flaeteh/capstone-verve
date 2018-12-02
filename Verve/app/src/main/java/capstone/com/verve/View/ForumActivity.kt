@@ -12,10 +12,12 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ImageButton
 import android.widget.ImageView
 import capstone.com.verve.Interface.AcceptListener
+import capstone.com.verve.Presenter.Posts
 import capstone.com.verve.R
 import capstone.com.verve.R.id.img_profile
 import capstone.com.verve.View.Adapters.ForumPagerAdapter
 import capstone.com.verve.View.Fragments.ForumAddPostFragment
+import com.firebase.ui.database.FirebaseRecyclerAdapter
 import kotlinx.android.synthetic.main.activity_forum.*
 
 class ForumActivity : AppCompatActivity(), AcceptListener {
@@ -48,6 +50,9 @@ class ForumActivity : AppCompatActivity(), AcceptListener {
         viewpager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout as TabLayout?))
 
     }
+
+
+
 
     private fun showPostDialog() {
         val fm = supportFragmentManager

@@ -8,7 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import capstone.com.verve.Interface.AcceptListener
+import capstone.com.verve.Presenter.Posts
 import capstone.com.verve.R
+import com.firebase.ui.database.FirebaseRecyclerAdapter
 
 private const val GALLERY_PICK = 1
 
@@ -24,6 +26,7 @@ class ForumPopularFragment : Fragment() {
 
         }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
