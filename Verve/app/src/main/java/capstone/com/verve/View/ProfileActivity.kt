@@ -27,6 +27,7 @@ class ProfileActivity : AppCompatActivity() {
     var txt_birthday: TextView? = null
     var txt_email: TextView? = null
     var btn_logout: ImageButton? = null
+    var txt_username : TextView? = null
     internal var userDetails = UserDetails()
     internal var firebaseConnection = FirebaseConnection()
 
@@ -36,6 +37,7 @@ class ProfileActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_profile)
 
+        txt_username = findViewById(R.id.txt_username)
         txt_name = findViewById(R.id.txt_name)
         txt_address = findViewById(R.id.txt_address)
         txt_age = findViewById(R.id.txt_age)
@@ -44,7 +46,7 @@ class ProfileActivity : AppCompatActivity() {
         btn_logout = findViewById(R.id.btn_logout)
 
 
-        userDetails.getUserProfile(firebaseConnection.getProfileReference("Users"), txt_name, txt_email, txt_birthday, txt_address)
+        userDetails.getUserProfile(firebaseConnection.getProfileReference("Users"), txt_username, txt_name, txt_email, txt_birthday, txt_address)
 
         var imgHome = findViewById<ImageButton>(R.id.img_home)
 

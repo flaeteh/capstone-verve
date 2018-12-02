@@ -17,7 +17,6 @@ import capstone.com.verve.R
 import capstone.com.verve.R.id.img_profile
 import capstone.com.verve.View.Adapters.ForumPagerAdapter
 import capstone.com.verve.View.Fragments.ForumAddPostFragment
-import com.firebase.ui.database.FirebaseRecyclerAdapter
 import kotlinx.android.synthetic.main.activity_forum.*
 
 class ForumActivity : AppCompatActivity(), AcceptListener {

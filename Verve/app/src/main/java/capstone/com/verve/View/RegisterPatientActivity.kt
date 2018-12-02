@@ -12,6 +12,12 @@ import capstone.com.verve.Presenter.Registration
 import capstone.com.verve.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import android.app.DatePickerDialog
+import android.widget.DatePicker
+import android.widget.ImageButton
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class RegisterPatientActivity : AppCompatActivity() {
 
@@ -28,8 +34,10 @@ class RegisterPatientActivity : AppCompatActivity() {
     var etxt_birthdate: EditText? = null
     var rad_male: RadioButton? = null
     var rad_female: RadioButton? = null
+    var btn_datepicker: ImageButton? = null
     private var user: FirebaseUser? = null
     internal var firebaseConnection = FirebaseConnection()
+    private val myCalendar = Calendar.getInstance()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +54,7 @@ class RegisterPatientActivity : AppCompatActivity() {
         etxt_email = findViewById(R.id.et_email)
         etxt_address = findViewById(R.id.et_address)
         etxt_birthdate = findViewById(R.id.et_birthday)
+        btn_datepicker = findViewById(R.id.btn_datepicker)
 
         rad_male = findViewById(R.id.radioMale);
         rad_female = findViewById(R.id.radioFemale)
@@ -54,7 +63,27 @@ class RegisterPatientActivity : AppCompatActivity() {
         user = firebaseConnection.firebaseUser
 
 
+        btn_datepicker?.setOnClickListener {
+            DatePickerDialog(
+                this@RegisterPatientActivity, datePickerListener, myCalendar
+                    .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
     }
+
+    val datePickerListener = object:DatePickerDialog.OnDateSetListener {
+        override fun onDateSet(view: DatePicker, year:Int, monthOfYear:Int,
+                               dayOfMonth:Int) {
+            myCalendar.set(Calendar.YEAR, year)
+            myCalendar.set(Calendar.MONTH, monthOfYear)
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            val myFormat = "MM/dd/yy"
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            etxt_birthdate?.setText(sdf.format(myCalendar.getTime()))
+        }
+    }
+
 
     fun optionRegister(v: View) {
         val i: Intent? = null

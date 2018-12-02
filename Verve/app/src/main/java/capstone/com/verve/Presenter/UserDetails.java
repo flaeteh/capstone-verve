@@ -12,13 +12,14 @@ public class UserDetails {
 
     Users users = new Users();
 
-    public void getUserProfile(DatabaseReference profileReference, final TextView name, final TextView email,
+    public void getUserProfile(DatabaseReference profileReference, final TextView username, final TextView name, final TextView email,
                                final TextView birthDate, final TextView userAddress){
 
         profileReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
+                    String uName = dataSnapshot.child("username").getValue().toString();
                     String firstname = dataSnapshot.child("firstname").getValue().toString();
                     String middlename = dataSnapshot.child("middlename").getValue().toString();
                     String lastname = dataSnapshot.child("lastname").getValue().toString();
@@ -35,6 +36,7 @@ public class UserDetails {
                         users.setWholeName(nameWithMiddle);
                         name.setText(nameWithMiddle);
                     }
+                    username.setText(uName);
                     userAddress.setText(address);
                     email.setText(emailAddress);
                     birthDate.setText(birthday);
