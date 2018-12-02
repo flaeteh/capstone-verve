@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TabWidget
 import android.widget.TextView
@@ -15,6 +16,7 @@ import capstone.com.verve.API.FirebaseConnection
 import capstone.com.verve.Presenter.UserDetails
 import capstone.com.verve.R
 import kotlinx.android.synthetic.main.activity_profile.*
+import org.jetbrains.anko.find
 import org.w3c.dom.Text
 
 class ProfileActivity : AppCompatActivity() {
@@ -24,6 +26,7 @@ class ProfileActivity : AppCompatActivity() {
     var txt_age: TextView? = null
     var txt_birthday: TextView? = null
     var txt_email: TextView? = null
+    var btn_logout: ImageButton? = null
     internal var userDetails = UserDetails()
     internal var firebaseConnection = FirebaseConnection()
 
@@ -38,6 +41,7 @@ class ProfileActivity : AppCompatActivity() {
         txt_age = findViewById(R.id.txt_age)
         txt_birthday = findViewById(R.id.txt_birthday)
         txt_email = findViewById(R.id.txt_email)
+        btn_logout = findViewById(R.id.btn_logout)
 
 
         userDetails.getUserProfile(firebaseConnection.getProfileReference("Users"), txt_name, txt_email, txt_birthday, txt_address)
@@ -60,5 +64,14 @@ class ProfileActivity : AppCompatActivity() {
     private fun showForum() {
         val intent = Intent(this@ProfileActivity, ForumActivity::class.java)
         startActivity(intent)
+    }
+
+    fun option(v: View){
+        if (v.id == R.id.btn_logout){
+            firebaseConnection.firebaseAuth.signOut()
+            val intent = Intent(this@ProfileActivity, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
+        }
     }
 }

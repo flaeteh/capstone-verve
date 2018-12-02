@@ -31,4 +31,6 @@ public class FirebaseConnection {
     public DatabaseReference getProfileReference(String node) {
         return profileReference = getFirebaseDatabase().getReference().child(node).child(getCurrentUser());
     }
+
+
 }

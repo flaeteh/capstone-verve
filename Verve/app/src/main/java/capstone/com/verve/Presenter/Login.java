@@ -56,7 +56,7 @@ public class Login {
                             if (dataSnapshot.exists()) {
                                 String role = dataSnapshot.child("role").getValue(String.class);
                                 if (role.equals(patient)) {
-                                    checkIfEmailIsVerified(context, auth, user);
+                                    sendPatientToForum(context);
                                 }
                             }
 
@@ -83,17 +83,17 @@ public class Login {
 
     }
 
-    private void checkIfEmailIsVerified(Context context, FirebaseAuth auth, FirebaseUser user) {
-        //FirebaseUser user = auth.getCurrentUser();
-        emailAddressChecker = user.isEmailVerified();
-
-        if (emailAddressChecker) {
-            sendPatientToForum(context);
-        } else {
-            Toast.makeText(context, "Please Verify your account first", Toast.LENGTH_SHORT).show();
-            auth.signOut();
-        }
-    }
+//    private void checkIfEmailIsVerified(Context context, FirebaseAuth auth, FirebaseUser user) {
+//        //FirebaseUser user = auth.getCurrentUser();
+//        emailAddressChecker = user.isEmailVerified();
+//
+//        if (emailAddressChecker) {
+//            sendPatientToForum(context);
+//        } else {
+//            Toast.makeText(context, "Please Verify your account first", Toast.LENGTH_SHORT).show();
+//            auth.signOut();
+//        }
+//    }
 }
 
 

@@ -142,6 +142,7 @@
                 android:layout_height="wrap_content"
                 app:srcCompat="@mipmap/ic_logout"
                 android:id="@+id/btn_logout"
+				android:onClick="option"
                 android:background="@null"
                 android:letterSpacing="0.1"
                 android:paddingTop="10dp"
