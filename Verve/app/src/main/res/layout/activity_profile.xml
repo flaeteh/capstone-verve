@@ -137,16 +137,16 @@
 			android:textColor="@android:color/white"
 			/>
 
-		<ImageButton
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			app:srcCompat="@mipmap/ic_settings"
-			android:id="@+id/imageButton2"
-			android:background="@null"
-			android:letterSpacing="0.1"
-			android:paddingTop="14dp"
-			android:paddingBottom="14dp"
-			android:scaleType="fitCenter"/>
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/ic_logout"
+                android:id="@+id/btn_logout"
+                android:background="@null"
+                android:letterSpacing="0.1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:scaleType="fitCenter"/>
 
 	</LinearLayout>
 
@@ -273,12 +273,12 @@
 
 	</LinearLayout>
 
-	<android.support.constraint.Guideline
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:id="@+id/guideline41"
-		android:orientation="horizontal"
-		app:layout_constraintGuide_percent="0.47"/>
+    <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline41"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.49"/>
 
 	<ImageView
 		android:layout_width="wrap_content"
@@ -293,41 +293,48 @@
 		app:layout_constraintTop_toTopOf="@+id/guideline38"/>
 
 	<android.support.design.widget.TabLayout
-		android:id="@+id/tabLayout"
-		android:layout_width="wrap_content"
-		android:layout_height="0dp"
-		app:tabMaxWidth="0dp"
-		app:tabGravity="fill"
-		app:tabMode="scrollable"
-		app:layout_constraintBottom_toTopOf="@+id/guideline41"
-		app:layout_constraintTop_toTopOf="@+id/guideline40"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintEnd_toEndOf="parent">
+			android:id="@+id/tabLayout"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			app:tabBackground="@drawable/tab_selector_profile"
+			app:tabIndicatorHeight="0dp"
+			app:layout_constraintBottom_toTopOf="@+id/guideline41"
+			app:layout_constraintTop_toTopOf="@+id/guideline40"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp" android:layout_marginLeft="16dp"
+			android:layout_marginStart="16dp" android:layout_marginEnd="16dp" android:layout_marginRight="16dp"
+			android:layout_marginBottom="12dp">
 
 		<android.support.design.widget.TabItem
-			android:id="@+id/tabItem"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginRight="20dp"
-			android:text="ALL POSTS"/>
+				android:id="@+id/tabItem"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="20dp"
+				android:text="ALL POSTS"/>
 
 		<android.support.design.widget.TabItem
-			android:id="@+id/tabItem2"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginRight="20dp"
+				android:id="@+id/tabItem2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="20dp"
 
-			android:text="MEDICAL HISTORY"/>
+				android:text="MEDICAL HISTORY"/>
 
 		<android.support.design.widget.TabItem
-			android:id="@+id/tabItem3"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginRight="20dp"
-			android:text="CONSULTING DOCTORS"/>
+				android:id="@+id/tabItem3"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="20dp"
+				android:text="CONSULTING DOCTORS"/>
 
 	</android.support.design.widget.TabLayout>
-
+    <android.support.v4.view.ViewPager
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout"/>
 
 
 </android.support.constraint.ConstraintLayout>

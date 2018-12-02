@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageButton
@@ -37,6 +39,7 @@ class ProfileActivity : AppCompatActivity() {
         txt_birthday = findViewById(R.id.txt_birthday)
         txt_email = findViewById(R.id.txt_email)
 
+
         userDetails.getUserProfile(firebaseConnection.getProfileReference("Users"), txt_name, txt_email, txt_birthday, txt_address)
 
         var imgHome = findViewById<ImageButton>(R.id.img_home)
@@ -45,6 +48,13 @@ class ProfileActivity : AppCompatActivity() {
            showForum()
         }
 
+        tabLayout?.setTabTextColors(resources.getColor(R.color.LightGray), resources.getColor(R.color.White))
+        for (i in 0 until tabLayout?.tabCount!!) {
+            val tab = (tabLayout?.getChildAt(0) as ViewGroup).getChildAt(i)
+            val p = tab.layoutParams as ViewGroup.MarginLayoutParams
+            p.setMargins(10, 0, 10, 0)
+            tab.requestLayout()
+        }
     }
 
     private fun showForum() {

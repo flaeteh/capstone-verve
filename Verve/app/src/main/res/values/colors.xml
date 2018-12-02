@@ -6,4 +6,5 @@
     <color name="White">#ffffff</color>
     <color name="GrayWhite">#d6d5d5</color>
     <color name="Pale">#a1a1a1</color>
+    <color name="LightGray">#747474</color>
 </resources>
